@@ -25,6 +25,7 @@
   chart.legend('fbi-legend', {
     marker: 'circle',
     position: 'left' // !!!!! 看这里，凡是 left 位置均为负数
+    // 看源码应该是这里计算有误 https://github.com/antvis/g2/blob/master/src/chart/controller/legend.js#L382
   });
   chart.coord('polar', {
     radius: 0.4
