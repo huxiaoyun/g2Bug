@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,height=device-height">
+    <title>基础雷达图</title>
+    <style>::-webkit-scrollbar{display:none;}html,body{overflow:hidden;height:100%;margin:0;}</style>
+</head>
+<body>
+<div id="mountNode"></div>
+<script>/*Fixing iframe window.innerHeight 0 issue in Safari*/document.body.clientHeight;</script>
+<script src="https://gw.alipayobjects.com/os/antv/pkg/_antv.g2-3.5.7/dist/g2.min.js"></script>
+<script src="https://gw.alipayobjects.com/os/antv/pkg/_antv.data-set-0.10.1/dist/data-set.min.js"></script>
+<script>
+
+  var data = [{"fbi-x":"侍浩","fbi-value":2,"fbi-legend":"星星数"},{"fbi-x":"侍浩","fbi-value":160,"fbi-legend":"星目标"},{"fbi-x":"吉一鸣","fbi-value":10,"fbi-legend":"星星数"},{"fbi-x":"吉一鸣","fbi-value":350,"fbi-legend":"星目标"},{"fbi-x":"吴新晓","fbi-value":2,"fbi-legend":"星星数"},{"fbi-x":"吴新晓","fbi-value":130,"fbi-legend":"星目标"},{"fbi-x":"周德现","fbi-value":0,"fbi-legend":"星星数"},{"fbi-x":"周德现","fbi-value":120,"fbi-legend":"星目标"},{"fbi-x":"周玲玲","fbi-value":4,"fbi-legend":"星星数"},{"fbi-x":"周玲玲","fbi-value":200,"fbi-legend":"星目标"},{"fbi-x":"周莉莉","fbi-value":0,"fbi-legend":"星星数"},{"fbi-x":"周莉莉","fbi-value":180,"fbi-legend":"星目标"},{"fbi-x":"周阳阳","fbi-value":1,"fbi-legend":"星星数"},{"fbi-x":"周阳阳","fbi-value":180,"fbi-legend":"星目标"},{"fbi-x":"唐志然","fbi-value":0,"fbi-legend":"星星数"},{"fbi-x":"唐志然","fbi-value":210,"fbi-legend":"星目标"},{"fbi-x":"姜旺","fbi-value":0,"fbi-legend":"星星数"},{"fbi-x":"姜旺","fbi-value":200,"fbi-legend":"星目标"},{"fbi-x":"张征","fbi-value":null,"fbi-legend":"星星数"},{"fbi-x":"张征","fbi-value":40,"fbi-legend":"星目标"},{"fbi-x":"彭贵香","fbi-value":2,"fbi-legend":"星星数"},{"fbi-x":"彭贵香","fbi-value":220,"fbi-legend":"星目标"},{"fbi-x":"朱亚强","fbi-value":0,"fbi-legend":"星星数"},{"fbi-x":"朱亚强","fbi-value":200,"fbi-legend":"星目标"},{"fbi-x":"林森","fbi-value":9,"fbi-legend":"星星数"},{"fbi-x":"林森","fbi-value":350,"fbi-legend":"星目标"},{"fbi-x":"柳小磊","fbi-value":1,"fbi-legend":"星星数"},{"fbi-x":"柳小磊","fbi-value":140,"fbi-legend":"星目标"},{"fbi-x":"王新海","fbi-value":2,"fbi-legend":"星星数"},{"fbi-x":"王新海","fbi-value":200,"fbi-legend":"星目标"},{"fbi-x":"王星","fbi-value":0,"fbi-legend":"星星数"},{"fbi-x":"王星","fbi-value":160,"fbi-legend":"星目标"},{"fbi-x":"王江英","fbi-value":2,"fbi-legend":"星星数"},{"fbi-x":"王江英","fbi-value":130,"fbi-legend":"星目标"},{"fbi-x":"罗丽玲","fbi-value":1,"fbi-legend":"星星数"},{"fbi-x":"罗丽玲","fbi-value":200,"fbi-legend":"星目标"},{"fbi-x":"薛多罗","fbi-value":0,"fbi-legend":"星星数"},{"fbi-x":"薛多罗","fbi-value":300,"fbi-legend":"星目标"},{"fbi-x":"赵东芳","fbi-value":null,"fbi-legend":"星星数"},{"fbi-x":"赵东芳","fbi-value":120,"fbi-legend":"星目标"},{"fbi-x":"赵林林","fbi-value":2,"fbi-legend":"星星数"},{"fbi-x":"赵林林","fbi-value":300,"fbi-legend":"星目标"},{"fbi-x":"陈守伟","fbi-value":0,"fbi-legend":"星星数"},{"fbi-x":"陈守伟","fbi-value":80,"fbi-legend":"星目标"},{"fbi-x":"马紫伟","fbi-value":2,"fbi-legend":"星星数"},{"fbi-x":"马紫伟","fbi-value":300,"fbi-legend":"星目标"},{"fbi-x":"魏明","fbi-value":6,"fbi-legend":"星星数"},{"fbi-x":"魏明","fbi-value":300,"fbi-legend":"星目标"}];
+  
+  var chart = new G2.Chart({
+    container: 'mountNode',
+    forceFit: true,
+    height: window.innerHeight,
+    padding: ["auto", "auto", "auto", 80]
+  });
+  chart.source(data);
+  chart.legend('fbi-legend', {
+    marker: 'circle',
+    position: 'left' // !!!!! 看这里，凡是 left 位置均为负数
+  });
+  chart.coord('polar', {
+    radius: 0.4
+  });
+  chart.axis('item', {
+    line: null,
+    tickLine: null,
+    grid: {
+      lineStyle: {
+        lineDash: null
+      },
+      hideFirstLine: false
+    }
+  });
+  chart.axis('score', {
+    line: null,
+    tickLine: null,
+    grid: {
+      type: 'polygon',
+      lineStyle: {
+        lineDash: null
+      }
+    }
+  });
+  chart.line().position('fbi-x*fbi-value').color('fbi-legend').size(2);
+  chart.render();
+</script>
+</body>
+</html>
